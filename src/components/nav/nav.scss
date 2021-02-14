@@ -1,0 +1,46 @@
+.navbar {
+  padding: 0;
+}
+.bg-light {
+  background-color: #d5dde0 !important;
+}
+.navbar-toggler {
+  color: #000000;
+  border-color: transparent !important;
+  &:focus {
+    text-decoration: none;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+.nav-link {
+  font-size: 16px;
+  padding: 13px;
+  &:focus,
+  &:hover {
+    background-color: #1d1d1d42;
+    @media (max-width: 991px) {
+      background-color: initial;
+    }
+  }
+}
+.report-scam {
+  color: #ce352c !important;
+  font-weight: 700;
+}
+
+.verification-nav {
+  color: #fa6800 !important;
+  font-weight: 700;
+}
+
+.menuopen,
+.menuclose {
+  height: 24px;
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(289deg) brightness(108%)
+    contrast(105%);
+}
+
+.active {
+  background-color: #1d1d1d42;
+}

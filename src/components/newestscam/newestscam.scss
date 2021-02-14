@@ -1,0 +1,91 @@
+.alert__head {
+  font-size: 36px;
+  @media (max-width: 500px) {
+    font-size: 26px;
+  }
+  @media (max-width: 420px) {
+    font-size: 20px;
+  }
+  &-left {
+    color: #000000;
+  }
+  &-right {
+    color: #ce352c;
+  }
+}
+.alert__para {
+  font-size: 20px;
+  color: #212121;
+  font-weight: 300;
+  @media (max-width: 500px) {
+    font-size: 18px;
+  }
+  @media (max-width: 420px) {
+    font-size: 16px;
+  }
+}
+
+.alert__hr {
+  height: 1px;
+  margin: 8px 0;
+}
+
+.newestscams {
+  background-color: #f8f8f8;
+}
+
+.newscamlist {
+  &__box {
+    background: #fff;
+    border-radius: 0;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    border: 1px solid #4183d7;
+    &:hover {
+      box-shadow: 0 0 6px #4183d7;
+      transform: scale(1.02);
+    }
+    &-text {
+      font-size: 15px;
+      line-height: 30px;
+      border: 1px solid #fff;
+      &-head {
+        text-decoration: none;
+        font-size: 20px;
+        div {
+          white-space: nowrap;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+    &-btn {
+      a {
+        color: #4183d7;
+        font-size: 16px;
+        background-color: green;
+        border-radius: 0;
+        color: #fff;
+        :focus,
+        &:hover {
+          color: #fff;
+        }
+      }
+      i {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+.see-all-report {
+  margin-top: 10px;
+  .see-all-report-btn {
+    font-size: 20px;
+    color: #617d89;
+  }
+}
