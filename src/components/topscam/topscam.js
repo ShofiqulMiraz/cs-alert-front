@@ -1,6 +1,7 @@
 import "./topscam.scss";
 import { Link } from "react-router-dom";
 import { skeletonUIForHomepage } from "../skeletonui/skeletonui";
+import Scam from "../scam/scam";
 
 const TopScam = ({ scams, loading }) => {
   return (
@@ -17,41 +18,7 @@ const TopScam = ({ scams, loading }) => {
           <hr className="alert__hr" />
           <div className="row topscamlist">
             {loading && skeletonUIForHomepage()}
-            {scams.map((scam, index) => {
-              return (
-                <div className="col-md-4" key={index}>
-                  <div className="topscamlist__box">
-                    <div className="topscamlist__box-text">
-                      <p className="topscamlist__box-text-title">Scammer</p>
-
-                      <Link
-                        to={`/scams/${scam.slug}`}
-                        className="topscamlist__box-text-head"
-                      >
-                        <div> {scam.title} </div>
-                      </Link>
-
-                      <p className="topscamlist__box-text-type">
-                        Scam Type : {scam.type}{" "}
-                      </p>
-                      <p className="topscamlist__box-text-vote">
-                        voted: {scam.likes.length}{" "}
-                      </p>
-                      <p className="topscamlist__box-text-author">
-                        Reported by: {scam.author} , at local date
-                      </p>
-                    </div>
-                    <hr className="alert__hr" />
-                    <div className="topscamlist__box-btn mt-1">
-                      <Link to={`/scams/${scam.slug}`} className="btn">
-                        {" "}
-                        See Details <i className="fas fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            <Scam scams={scams} />
             <div className="see-all-report">
               <Link to="/allscammers" className="btn see-all-report-btn">
                 {" "}

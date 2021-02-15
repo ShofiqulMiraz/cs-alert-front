@@ -1,6 +1,7 @@
 import "./newestscam.scss";
 import { Link } from "react-router-dom";
 import { skeletonUIForHomepage } from "../skeletonui/skeletonui";
+import Scam from "../scam/scam";
 
 const NewestScam = ({ scams, loading }) => {
   return (
@@ -17,42 +18,7 @@ const NewestScam = ({ scams, loading }) => {
           <hr className="alert__hr" />
           <div className="row newscamlist">
             {loading && skeletonUIForHomepage()}
-
-            {scams.map((scam, index) => {
-              return (
-                <div className="col-md-4 mb-2" key={index}>
-                  <div className="newscamlist__box">
-                    <div className="newscamlist__box-text">
-                      <p className="newscamlist__box-text-title">Scammer</p>
-
-                      <Link
-                        to={`/scams/${scam.slug}`}
-                        className="newscamlist__box-text-head"
-                      >
-                        <div> {scam.title} </div>
-                      </Link>
-
-                      <p className="newscamlist__box-text-type">
-                        Scam Type : {scam.type}{" "}
-                      </p>
-                      <p className="newscamlist__box-text-vote">
-                        voted: {scam.likes.length}{" "}
-                      </p>
-                      <p className="newscamlist__box-text-author">
-                        Reported by: {scam.author} , at date here
-                      </p>
-                    </div>
-                    <hr className="alert__hr" />
-                    <div className="newscamlist__box-btn mt-1">
-                      <Link to={`/scams/${scam.slug}`} className="btn">
-                        {" "}
-                        See Details <i className="fas fa-arrow-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            <Scam scams={scams} />
             <div className="see-all-report">
               <Link to="/allscammers" className="btn see-all-report-btn">
                 {" "}
