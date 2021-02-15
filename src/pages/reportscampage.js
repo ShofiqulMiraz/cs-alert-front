@@ -2,12 +2,19 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import axios from "axios";
+import "./reportscampage.scss";
+import Footer from "../components/footer/footer";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const ReportScamPage = () => {
+  let history = useHistory();
   const [markdownvalue, setmarkdownvalue] = useState("");
   const { register, handleSubmit } = useForm();
+  const [loading, setloading] = useState();
   const onSubmit = async (data) => {
     try {
+      setloading(true);
       const description = `${markdownvalue}`;
       const body = { description, ...data };
       const config = {
@@ -15,30 +22,44 @@ const ReportScamPage = () => {
           "Content-Type": "application/json",
         },
       };
-      console.log(body);
-      const res = await axios.post("/api/scamrequest", body, config);
-      console.log(res);
+      await axios.post("/api/scamrequest", body, config);
+      setloading(false);
+      toast.success(
+        "Successfully Submitted your Request. We will review and add your request to our list soon."
+      );
+      history.push("/");
     } catch (error) {
-      // const err = error.response;
-      console.log(error);
+      const err = error.response.data;
+      toast.error(err);
+      setloading(false);
     }
   };
   return (
     <>
-      <div className="container mt-5 pt-5 pb-5">
+      <div className="container mt-2">
+        <h1 className="reportscampage__head-title">Report new Crypto scam</h1>
+        <p className="reportscampage__head-para">
+          If you are a victim of crypto fraud or know about such facts, please
+          share this information and help other people not to become a victim of
+          scammers. Let's make the crypto world clean and safe together!
+        </p>
+        <hr className="alert__hr" />
+      </div>
+
+      <div className="container pt-4 pb-5">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
             <div className="col-md-6">
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">
-                  Scammer's name:
+                  Scammer's Name:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   name="name"
                   ref={register({ required: true, maxLength: 20 })}
-                  placeholder="enter scammer name"
+                  placeholder="Enter Scammer Name"
                 />
                 <small className="form-text text-muted">
                   Scammer's personal name or the company name.
@@ -46,7 +67,7 @@ const ReportScamPage = () => {
               </div>
               <div className="mb-3">
                 <label htmlFor="scamdetails" className="form-label">
-                  Scam description:
+                  Scam Description:
                 </label>
                 <MDEditor
                   value={markdownvalue}
@@ -64,13 +85,13 @@ const ReportScamPage = () => {
             <div className="col-md-6">
               <div className="mb-3">
                 <label htmlFor="scammerslink" className="form-label">
-                  Scammer's link:
+                  Scammer's Link:
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   name="link"
-                  ref={register}
+                  ref={register({ required: true })}
                   placeholder="example.com"
                 />
                 <small className="form-text text-muted">
@@ -80,22 +101,32 @@ const ReportScamPage = () => {
               </div>
               <div className="mb-3">
                 <label htmlFor="scammerstype" className="form-label">
-                  Scam type:
+                  Scam Type:
                 </label>
-                <select className="form-select" name="type" ref={register}>
+                <select
+                  className="form-select"
+                  name="type"
+                  ref={register({ required: true })}
+                >
                   <option value="ico">ICO</option>
                   <option value="cryptoblogger">Crypto Blogger</option>
+                  <option value="cryptoexchange">Crypto Exchange</option>
                   <option value="telegram">Telegram</option>
+                  <option value="ponzi">Ponzi</option>
+                  <option value="bitcoinmixers">Bitcoin Mixers</option>
+                  <option value="bitcoincasinos">Bitcoin Casinos</option>
+                  <option value="others">Others</option>
                 </select>
               </div>
             </div>
           </div>
 
           <button type="submit" className="btn btn-primary mb-3 mt-2">
-            Report Scam
+            {loading ? " Reporting Scam..." : " Report Scam"}
           </button>
         </form>
       </div>
+      <Footer />
     </>
   );
 };
