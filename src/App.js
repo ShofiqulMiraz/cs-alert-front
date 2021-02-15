@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoadingSpinner from "./components/loadingspinner/loadingspinner";
 import { Login, Logout } from "./redux/actions/user";
 import { useDispatch } from "react-redux";
+const LoginComponent = React.lazy(() => import("./components/login/login"));
 const HomePage = React.lazy(() => import("./pages/homepage"));
 const AllScammerPage = React.lazy(() => import("./pages/allscammerpage"));
 const NewestScamsPage = React.lazy(() => import("./pages/newestscamspage"));
@@ -14,8 +15,7 @@ const VerificationPage = React.lazy(() => import("./pages/verificationpage"));
 const SingleScamDetailsPage = React.lazy(() =>
   import("./pages/singlescamdetailspage")
 );
-const SignUpPage = React.lazy(() => import("./pages/signuppage"));
-const LoginPage = React.lazy(() => import("./pages/loginpage"));
+const SignUpComponent = React.lazy(() => import("./components/signup/signup"));
 
 function App() {
   // continuously checking user auth state
@@ -43,8 +43,8 @@ function App() {
             <Route path="/reportscam" component={ReportScamPage} />
             {/* <ProtectedRoute path="/reportscam" component={ReportScamPage} /> */}
             <Route path="/verification" component={VerificationPage} />
-            <Route path="/signup" component={SignUpPage} />
-            <Route path="/login" component={LoginPage} />
+            <Route path="/signup" component={SignUpComponent} />
+            <Route path="/login" component={LoginComponent} />
             <Route path="/scams/:id" component={SingleScamDetailsPage} />
           </Switch>
         </Router>

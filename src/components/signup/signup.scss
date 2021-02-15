@@ -1,0 +1,41 @@
+.signup {
+  background-color: #f8f8f8;
+  height: 92vh;
+  @media (max-width: 991px) {
+    height: 94vh;
+  }
+  &__container {
+    max-width: 576px;
+  }
+  &__title {
+    font-weight: 300;
+  }
+  &__button {
+    color: #fff;
+    border-radius: 0;
+    padding: 7px 35px;
+    background-color: #607d8b;
+    border-color: #607d8b;
+    &:focus,
+    &:hover {
+      outline: 0;
+      color: #fff;
+      background-color: #607d8be1;
+      border-color: #607d8be1;
+    }
+  }
+  &__tologin {
+    text-transform: capitalize;
+    span a {
+      padding: 0;
+      color: #0366d6;
+      &:focus,
+      &:hover {
+        color: #0366d6;
+        text-decoration: none;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+}

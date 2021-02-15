@@ -1,21 +1,8 @@
 import "./topscam.scss";
-
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { skeletonUIForHomepage } from "../skeletonui/skeletonui";
 
-const TopScam = () => {
-  const [scams, setscams] = useState([]);
-  const [loading, setloading] = useState(false);
-  useEffect(async () => {
-    setloading(true);
-    const response = await axios.get(`/api/scams?limit=6`);
-    const scams = response.data;
-    setscams(scams);
-    setloading(false);
-  }, []);
-
+const TopScam = ({ scams, loading }) => {
   return (
     <>
       <section className="topscams pt-5 pb-5">

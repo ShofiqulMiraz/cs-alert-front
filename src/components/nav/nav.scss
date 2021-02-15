@@ -34,6 +34,14 @@
   font-weight: 700;
 }
 
+.logout-btn {
+  &:focus {
+    text-decoration: none;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
 .menuopen,
 .menuclose {
   height: 24px;

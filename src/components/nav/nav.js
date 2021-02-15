@@ -1,10 +1,22 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./nav.scss";
 import { Link, NavLink } from "react-router-dom";
 import MenuOpen from "../../assets/menu.svg";
 import MenuClose from "../../assets/close.svg";
+import { Logout } from "../../redux/actions/user";
 
 const NavBar = () => {
+  // getting user state from redux
+  const { isloggedin } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+  // handling logout action
+  const handleLogout = () => {
+    dispatch(Logout());
+  };
+
+  // checking if nav toggle is clicked
   const [navclicked, setNavclicked] = useState(false);
   const navclickHandler = () => {
     setNavclicked(!navclicked);
@@ -71,16 +83,27 @@ const NavBar = () => {
                   Check Before Invest
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/login" className="nav-link">
-                  Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/signup" className="nav-link">
-                  Signup
-                </NavLink>
-              </li>
+              {isloggedin ? (
+                <>
+                  <button className="btn logout-btn" onClick={handleLogout}>
+                    {" "}
+                    Logout{" "}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <NavLink to="/login" className="nav-link">
+                      Login
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/signup" className="nav-link">
+                      Signup
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

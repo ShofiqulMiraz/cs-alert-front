@@ -1,7 +1,5 @@
-import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-
 import MDEditor from "@uiw/react-md-editor";
 import axios from "axios";
 
@@ -9,32 +7,36 @@ const ReportScamPage = () => {
   const [markdownvalue, setmarkdownvalue] = useState("");
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-    const description = `${markdownvalue}`;
-    const body = { description, ...data };
-    const config = {
-      headers: { "Content-Type": "application/json" },
-    };
-    console.log(body);
-    const res = await axios.post(`/api/scamrequest`, body, config);
-    console.log(res);
+    try {
+      const description = `${markdownvalue}`;
+      const body = { description, ...data };
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      console.log(body);
+      const res = await axios.post("/api/scamrequest", body, config);
+      console.log(res);
+    } catch (error) {
+      // const err = error.response;
+      console.log(error);
+    }
   };
   return (
     <>
-      <Helmet>
-        <title>Devconnector | ReportScamPage</title>
-      </Helmet>
       <div className="container mt-5 pt-5 pb-5">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
             <div className="col-md-6">
               <div className="mb-3">
-                <label htmlFor="scammersname" className="form-label">
+                <label htmlFor="name" className="form-label">
                   Scammer's name:
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  name="scammersname"
+                  name="name"
                   ref={register({ required: true, maxLength: 20 })}
                   placeholder="enter scammer name"
                 />
@@ -43,7 +45,7 @@ const ReportScamPage = () => {
                 </small>
               </div>
               <div className="mb-3">
-                <label htmlFor="scammersname" className="form-label">
+                <label htmlFor="scamdetails" className="form-label">
                   Scam description:
                 </label>
                 <MDEditor
@@ -67,7 +69,7 @@ const ReportScamPage = () => {
                 <input
                   type="text"
                   className="form-control"
-                  name="scammerslink"
+                  name="link"
                   ref={register}
                   placeholder="example.com"
                 />
@@ -77,10 +79,10 @@ const ReportScamPage = () => {
                 </small>
               </div>
               <div className="mb-3">
-                <label htmlFor="scammerslink" className="form-label">
+                <label htmlFor="scammerstype" className="form-label">
                   Scam type:
                 </label>
-                <select className="form-select" name="scamtype" ref={register}>
+                <select className="form-select" name="type" ref={register}>
                   <option value="ico">ICO</option>
                   <option value="cryptoblogger">Crypto Blogger</option>
                   <option value="telegram">Telegram</option>
