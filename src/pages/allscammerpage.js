@@ -5,10 +5,13 @@ import Scam from "../components/scam/scam";
 import "./allscammerpage.scss";
 import ScamGallery from "../components/scamgallery/scamgallery";
 import Footer from "../components/footer/footer";
+import { useHistory } from "react-router-dom";
 
 const AllScammerPage = () => {
+  let history = useHistory();
   const [scamssortedbylikes, setscamssortedbylikes] = useState([]);
   const [loading, setloading] = useState(false);
+  const [searchterm, setsearchterm] = useState("");
 
   const getScamsByLikes = async () => {
     try {
@@ -24,6 +27,11 @@ const AllScammerPage = () => {
   useEffect(() => {
     getScamsByLikes();
   }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    history.push(`/search/${searchterm}`);
+  };
   return (
     <>
       <section className="allscammerpage mt-2">
@@ -38,13 +46,14 @@ const AllScammerPage = () => {
                 Scammers list ordered by voting.
               </p>
             </div>
-            <div className="search__input mb-4">
+            <form className="search__input mb-4" onSubmit={handleSearch}>
               <input
                 type="text"
                 name="search"
-                placeholder="Enter domain,resource or company name.."
+                placeholder="Type domain,resource or company name and press Enter"
+                onChange={(e) => setsearchterm(e.target.value)}
               />
-            </div>
+            </form>
             {loading && skeletonUIForDetailsPage()}
             <Scam scams={scamssortedbylikes} />
           </div>

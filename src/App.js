@@ -1,10 +1,11 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useEffect, Suspense } from "react";
 
 import NavBar from "./components/nav/nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoadingSpinner from "./components/loadingspinner/loadingspinner";
 import { Login, Logout } from "./redux/actions/user";
 import { useDispatch } from "react-redux";
+import SearchPage from "./pages/searchpage";
 const LoginComponent = React.lazy(() => import("./components/login/login"));
 const HomePage = React.lazy(() => import("./pages/homepage"));
 const AllScammerPage = React.lazy(() => import("./pages/allscammerpage"));
@@ -46,6 +47,7 @@ function App() {
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/login" component={LoginComponent} />
             <Route path="/scams/:id" component={SingleScamDetailsPage} />
+            <Route path="/search/:term" component={SearchPage} />
           </Switch>
         </Router>
       </Suspense>
