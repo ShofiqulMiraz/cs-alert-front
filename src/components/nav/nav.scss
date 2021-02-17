@@ -35,6 +35,11 @@
 }
 
 .logout-btn {
+  padding: 13px 8px;
+  @media (max-width: 991px) {
+    padding: 13px 0 13px 0;
+  }
+
   &:focus {
     text-decoration: none;
     outline: none !important;

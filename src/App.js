@@ -6,6 +6,7 @@ import LoadingSpinner from "./components/loadingspinner/loadingspinner";
 import { Login, Logout } from "./redux/actions/user";
 import { useDispatch } from "react-redux";
 import SearchPage from "./pages/searchpage";
+import PrivateRoute from "./auth/privateroutes";
 const LoginComponent = React.lazy(() => import("./components/login/login"));
 const HomePage = React.lazy(() => import("./pages/homepage"));
 const AllScammerPage = React.lazy(() => import("./pages/allscammerpage"));
@@ -41,8 +42,9 @@ function App() {
             <Route path="/allscammers" component={AllScammerPage} />
             <Route path="/newestscams" component={NewestScamsPage} />
             <Route path="/topscams" component={TopScamPage} />
-            <Route path="/reportscam" component={ReportScamPage} />
-            {/* <ProtectedRoute path="/reportscam" component={ReportScamPage} /> */}
+            <PrivateRoute path="/reportscam">
+              <ReportScamPage />
+            </PrivateRoute>
             <Route path="/verification" component={VerificationPage} />
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/login" component={LoginComponent} />

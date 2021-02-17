@@ -19,6 +19,7 @@ const SearchPage = ({ match }) => {
       {searchResult ? (
         <div className="container mt-4">
           <div className="row">
+            <h1>here is your search result: </h1>
             <Scam scams={searchResult} />
           </div>
         </div>

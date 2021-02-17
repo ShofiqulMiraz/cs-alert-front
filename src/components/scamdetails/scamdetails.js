@@ -7,9 +7,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const ScamDetails = ({ scam }) => {
-  console.log(scam);
   const htmlPart = `${scam.description}`;
-  const [loading, setloading] = useState();
+  const [loading, setloading] = useState(false);
+
   const handleLikes = async () => {
     try {
       setloading(true);

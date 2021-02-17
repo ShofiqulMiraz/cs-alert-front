@@ -27,7 +27,7 @@ const NavBar = () => {
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
             {/* <img src={logo} alt="logo" className="logo" /> */}
-            cryptoscamalert
+            CryptoScamAlert
           </Link>
           <button
             className="navbar-toggler"
@@ -85,7 +85,7 @@ const NavBar = () => {
               </li>
               {isloggedin ? (
                 <>
-                  <button className="btn logout-btn" onClick={handleLogout}>
+                  <button className="btn logout-btn d-flex" onClick={handleLogout}>
                     {" "}
                     Logout{" "}
                   </button>
