@@ -24,7 +24,7 @@ const Scam = ({ scams }) => {
                 voted: {scam.likes.length}{" "}
               </p>
               <p className="scamlist__box-text-author">
-                Reported by: {scam.author} , at date here
+                Reported by: {scam.author}
               </p>
             </div>
             <hr className="alert__hr" />

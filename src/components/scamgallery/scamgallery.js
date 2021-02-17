@@ -17,22 +17,31 @@ const ScamGallery = () => {
 
           <hr className="alert__hr" />
 
-          <div className="row">
-            <div className="col mb-2">
-              <img src="https://via.placeholder.com/130" alt="1" />
-            </div>
-            <div className="col mb-2">
-              <img src="https://via.placeholder.com/130" alt="1" />
-            </div>
-            <div className="col mb-2">
-              <img src="https://via.placeholder.com/130" alt="1" />
-            </div>
-            <div className="col mb-2">
-              <img src="https://via.placeholder.com/130" alt="1" />
-            </div>
-            <div className="col mb-2">
-              <img src="https://via.placeholder.com/130" alt="1" />
-            </div>
+          <div className="row d-flex flex-wrap">
+            <img
+              src="https://robohash.org/1"
+              className="img-fluid"
+              alt="1"
+              style={{ height: "150px", maxWidth: "150px" }}
+            />
+            <img
+              src="https://robohash.org/2"
+              className="img-fluid"
+              alt="1"
+              style={{ height: "150px", maxWidth: "150px" }}
+            />
+            <img
+              src="https://robohash.org/3"
+              className="img-fluid"
+              alt="1"
+              style={{ height: "150px", maxWidth: "150px" }}
+            />
+            <img
+              src="https://robohash.org/4"
+              className="img-fluid"
+              alt="1"
+              style={{ height: "150px", maxWidth: "150px" }}
+            />
           </div>
         </div>
       </section>

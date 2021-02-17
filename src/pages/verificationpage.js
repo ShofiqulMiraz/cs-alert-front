@@ -5,10 +5,16 @@ import "./verificationpage.scss";
 import Footer from "../components/footer/footer";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import useClipboard from "react-use-clipboard";
 
 const VerificationPage = () => {
+  const [isCopiedBTC, setCopiedBTC] = useClipboard(
+    "1M24NovHG8zcrpa3z28cpDGy4eBxicKure"
+  );
+  const [isCopiedETH, setCopiedETH] = useClipboard(
+    "0xebE321bc7a19dDbdA2550068840fdE5e0FfeE542"
+  );
   let history = useHistory();
-  const [markdownvalue, setmarkdownvalue] = useState("");
   const { register, handleSubmit } = useForm();
   const [loading, setloading] = useState();
   const onSubmit = async (data) => {
@@ -31,6 +37,7 @@ const VerificationPage = () => {
       setloading(false);
     }
   };
+
   return (
     <>
       <div className="container mt-2">
@@ -48,68 +55,160 @@ const VerificationPage = () => {
       </div>
 
       <div className="container pt-4 pb-5">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="row">
-            <div className="col-md-6">
+        <div className="row">
+          <div className="col-md-7">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">
-                  Scammer's Name:
+                  Your Name
                 </label>
                 <input
                   type="text"
                   className="form-control"
                   name="name"
-                  ref={register({ required: true, maxLength: 20 })}
-                  placeholder="Enter Scammer Name"
+                  ref={register({ required: true })}
+                  placeholder="Enter your name"
                 />
-                <small className="form-text text-muted">
-                  Scammer's personal name or the company name.
-                </small>
               </div>
-            </div>
-            {/* <div className="col-md-6">
               <div className="mb-3">
-                <label htmlFor="scammerslink" className="form-label">
-                  Scammer's Link:
+                <label htmlFor="email" className="form-label">
+                  Your Email
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   className="form-control"
-                  name="link"
+                  name="email"
                   ref={register({ required: true })}
-                  placeholder="example.com"
+                  placeholder="Enter contact email"
                 />
-                <small className="form-text text-muted">
-                  Link to the scammer's social media profile, blog or the
-                  website
+              </div>
+              <div className="row">
+                <div className="col-md-4">
+                  <label htmlFor="currency" className="form-label">
+                    Currency:
+                  </label>
+                  <select
+                    className="form-select"
+                    name="currency"
+                    ref={register({ required: true })}
+                  >
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                  </select>
+                </div>
+                <div className="col-md-4">
+                  <div className="mb-3">
+                    <label htmlFor="transactionAddress" className="form-label">
+                      Transaction address:
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="transactionAddress"
+                      ref={register({ required: true })}
+                      placeholder="Transaction Address"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-4">
+                  <label htmlFor="transactionDate" className="form-label">
+                    Transaction date:
+                  </label>
+                  <input
+                    type="date"
+                    className="form-control"
+                    name="transactionDate"
+                    defaultValue="2021-01-01"
+                    min="2021-01-01"
+                    max="2025-12-31"
+                    ref={register({ required: true })}
+                  />
+                </div>
+                <small className="form-text text-muted mt-0">
+                  ETH ot BTC address you sent payment from
                 </small>
               </div>
               <div className="mb-3">
-                <label htmlFor="scammerstype" className="form-label">
-                  Scam Type:
+                <label htmlFor="request" className="form-label">
+                  Request:
                 </label>
-                <select
-                  className="form-select"
-                  name="type"
+                <textarea
+                  className="form-control"
+                  name="request"
+                  rows="6"
                   ref={register({ required: true })}
-                >
-                  <option value="ico">ICO</option>
-                  <option value="cryptoblogger">Crypto Blogger</option>
-                  <option value="cryptoexchange">Crypto Exchange</option>
-                  <option value="telegram">Telegram</option>
-                  <option value="ponzi">Ponzi</option>
-                  <option value="bitcoinmixers">Bitcoin Mixers</option>
-                  <option value="bitcoincasinos">Bitcoin Casinos</option>
-                  <option value="others">Others</option>
-                </select>
+                ></textarea>
+                <small className="form-text text-muted">
+                  Please write down as much information as possible
+                </small>
               </div>
-            </div> */}
-          </div>
 
-          <button type="submit" className="btn btn-primary mb-3 mt-2">
-            {loading ? " Submitting Request ..." : " Request Verification"}
-          </button>
-        </form>
+              <button type="submit" className="btn btn-primary mb-3 mt-2">
+                {loading ? " Submitting Request ..." : " Request Verification"}
+              </button>
+            </form>
+          </div>
+          <div
+            className={
+              window.innerWidth > 768
+                ? `col-md-5 verification-right`
+                : `col-md-5 verification-right order-first mb-4`
+            }
+          >
+            <h4>You can pay using ETH or BTC. Price for the research:</h4>
+            <div className="btc-pay">
+              <h3>BTC - 0.01</h3>
+              <div className="mb-3">
+                <label htmlFor="btc" className="form-label">
+                  Our Btc address:
+                </label>
+                <div className="d-flex">
+                  <input
+                    type="text"
+                    className="form-control"
+                    defaultValue="1M24NovHG8zcrpa3z28cpDGy4eBxicKure"
+                    readOnly
+                  />
+                  <button className="btn btn-success" onClick={setCopiedBTC}>
+                    {isCopiedBTC ? (
+                      <i className="fas fa-clipboard-check"></i>
+                    ) : (
+                      <i className="far fa-clipboard"></i>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="eth-pay">
+              <h3>ETH - 0.25</h3>
+              <div className="mb-3">
+                <label htmlFor="btc" className="form-label">
+                  Our Eth address:
+                </label>
+                <div className="d-flex">
+                  <input
+                    type="text"
+                    className="form-control"
+                    defaultValue="0xebE321bc7a19dDbdA2550068840fdE5e0FfeE542"
+                    readOnly
+                  />
+                  <button className="btn btn-success" onClick={setCopiedETH}>
+                    {isCopiedETH ? (
+                      <i className="fas fa-clipboard-check"></i>
+                    ) : (
+                      <i className="far fa-clipboard"></i>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+            <hr className="alert__hr mt-4 mb-4" />
+            <p>
+              Fill in the form and send us your request. Thank you for using our
+              service!
+            </p>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
