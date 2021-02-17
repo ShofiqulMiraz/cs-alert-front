@@ -8,7 +8,7 @@ import { Logout } from "../../redux/actions/user";
 
 const NavBar = () => {
   // getting user state from redux
-  const { isloggedin } = useSelector((state) => state.userReducer);
+  const { user, isloggedin } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   // handling logout action
@@ -85,7 +85,10 @@ const NavBar = () => {
               </li>
               {isloggedin ? (
                 <>
-                  <button className="btn logout-btn d-flex" onClick={handleLogout}>
+                  <button
+                    className="btn logout-btn d-flex"
+                    onClick={handleLogout}
+                  >
                     {" "}
                     Logout{" "}
                   </button>
@@ -103,6 +106,13 @@ const NavBar = () => {
                     </NavLink>
                   </li>
                 </>
+              )}
+              {user?.role === "admin" && (
+                <li className="nav-item">
+                  <NavLink to="/admin" className="nav-link">
+                    Admin Panel
+                  </NavLink>
+                </li>
               )}
             </ul>
           </div>
