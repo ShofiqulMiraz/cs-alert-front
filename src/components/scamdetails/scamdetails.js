@@ -13,7 +13,7 @@ const ScamDetails = ({ scam }) => {
   const handleLikes = async () => {
     try {
       setloading(true);
-      await axios.patch(`/api/scams/${scam._id}/like`);
+      await axios.patch(`https://cs-alert-api.herokuapp.com/api/scams/${scam._id}/like`);
       toast.success("successfully liked report!");
       setloading(false);
     } catch (error) {

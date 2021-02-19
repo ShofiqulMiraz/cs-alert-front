@@ -7,7 +7,7 @@ import Scam from "../components/scam/scam";
 const SearchPage = ({ match }) => {
   const [searchResult, setsearchResult] = useState();
   const getSearchResult = async () => {
-    const res = await axios.get(`/api/scams/search/${match.params.term}`);
+    const res = await axios.get(`https://cs-alert-api.herokuapp.com/api/scams/search/${match.params.term}`);
     setsearchResult(res.data);
   };
   useEffect(() => {

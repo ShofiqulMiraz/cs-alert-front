@@ -19,7 +19,7 @@ const SignUpComponent = () => {
     setloading(true);
 
     try {
-      const res = await axios.post("/api/users/register", data, {
+      const res = await axios.post("https://cs-alert-api.herokuapp.com/api/users/register", data, {
         headers: {
           "Content-Type": "application/json",
         },

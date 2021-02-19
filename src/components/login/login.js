@@ -19,7 +19,7 @@ const LoginComponent = () => {
   const onSubmit = async (data) => {
     try {
       setloading(true);
-      const res = await axios.post("/api/users/login", data, {
+      const res = await axios.post("https://cs-alert-api.herokuapp.com/api/users/login", data, {
         headers: {
           "Content-Type": "application/json",
         },

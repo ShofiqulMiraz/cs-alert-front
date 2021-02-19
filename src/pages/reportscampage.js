@@ -22,7 +22,7 @@ const ReportScamPage = () => {
           "Content-Type": "application/json",
         },
       };
-      await axios.post("/api/scamrequest", body, config);
+      await axios.post("https://cs-alert-api.herokuapp.com/api/scamrequest", body, config);
       setloading(false);
       toast.success(
         "Successfully Submitted your Request. We will review and add your request to our list soon."

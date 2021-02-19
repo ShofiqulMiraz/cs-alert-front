@@ -10,7 +10,9 @@ const ScamRequests = () => {
   const getScamRequests = async () => {
     try {
       setloading(true);
-      const response = await axios.get(`/api/scamrequest`);
+      const response = await axios.get(
+        `https://cs-alert-api.herokuapp.com/api/scamrequest`
+      );
       const data = response.data;
       setscamrequests(data);
       console.log(data);
@@ -30,6 +32,7 @@ const ScamRequests = () => {
         <div className="container">
           <div className="row">
             <h1>scamrequests for audit</h1>
+            {loading && <p>loading data....</p>}
             {scamrequests?.map((scamrequest, index) => (
               <div className="scamrequests__title" key={index}>
                 <h3> {scamrequest.name} </h3>
