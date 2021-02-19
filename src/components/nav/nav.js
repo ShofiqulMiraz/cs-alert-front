@@ -8,7 +8,7 @@ import { Logout } from "../../redux/actions/user";
 
 const NavBar = () => {
   // getting user state from redux
-  const { isloggedin } = useSelector((state) => state.userReducer);
+  const { user, isloggedin } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   // handling logout action
@@ -106,6 +106,13 @@ const NavBar = () => {
                     </NavLink>
                   </li>
                 </>
+              )}
+              {user?.role === "admin" && (
+                <li className="nav-item">
+                  <NavLink to="/scamrequests" className="nav-link">
+                    Scam Requests
+                  </NavLink>
+                </li>
               )}
             </ul>
           </div>

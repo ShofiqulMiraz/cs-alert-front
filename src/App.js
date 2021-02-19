@@ -7,6 +7,8 @@ import { Login, Logout } from "./redux/actions/user";
 import { useDispatch } from "react-redux";
 import SearchPage from "./pages/searchpage";
 import PrivateRoute from "./auth/privateroutes";
+import AdminRoute from "./auth/adminroutes";
+const ScamRequests = React.lazy(() => import("./pages/scamrequests"));
 const LoginComponent = React.lazy(() => import("./components/login/login"));
 const HomePage = React.lazy(() => import("./pages/homepage"));
 const AllScammerPage = React.lazy(() => import("./pages/allscammerpage"));
@@ -45,6 +47,9 @@ function App() {
             <PrivateRoute path="/reportscam">
               <ReportScamPage />
             </PrivateRoute>
+            <AdminRoute path="/scamrequests">
+              <ScamRequests />
+            </AdminRoute>
             <Route path="/verification" component={VerificationPage} />
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/login" component={LoginComponent} />
