@@ -53,7 +53,6 @@ const LoginComponent = () => {
                   placeholder="name@example.com"
                   ref={register}
                   required
-                  defaultValue="shofiqul2@gmail.com"
                 />
                 <label htmlFor="floatingInput">Enter Your Email address</label>
               </div>
@@ -65,7 +64,6 @@ const LoginComponent = () => {
                   placeholder="Password"
                   ref={register}
                   required
-                  defaultValue="test1234"
                 />
                 <label htmlFor="floatingPassword">Enter Your Password</label>
               </div>
