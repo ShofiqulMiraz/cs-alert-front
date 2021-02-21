@@ -13,7 +13,9 @@ const ScamDetails = ({ scam }) => {
   const handleLikes = async () => {
     try {
       setloading(true);
-      await axios.patch(`https://cs-alert-api.herokuapp.com/api/scams/${scam._id}/like`);
+      await axios.patch(
+        `https://cs-alert-api.herokuapp.com/api/scams/${scam._id}/like`
+      );
       toast.success("successfully liked report!");
       setloading(false);
     } catch (error) {
@@ -34,13 +36,8 @@ const ScamDetails = ({ scam }) => {
         <hr className="alert__hr mb-3" />
         <div className="votes">
           <p>
-            {" "}
-            Votes:{" "}
-            {scam?.likes?.length ? (
-              `${scam.likes.length}`
-            ) : (
-              <Skeleton width={100} />
-            )}
+            Votes:
+            {(scam?.likes?.length > 1 && ` ${scam.likes.length}`) || ` 0`}
           </p>
 
           <button className="likebtn btn btn-primary " onClick={handleLikes}>

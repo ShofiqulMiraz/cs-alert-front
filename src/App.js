@@ -20,6 +20,7 @@ const SingleScamDetailsPage = React.lazy(() =>
   import("./pages/singlescamdetailspage")
 );
 const SignUpComponent = React.lazy(() => import("./components/signup/signup"));
+const PostNewScamPage = React.lazy(() => import("./pages/postnewscampage"));
 
 function App() {
   // continuously checking user auth state
@@ -49,6 +50,9 @@ function App() {
             </PrivateRoute>
             <AdminRoute path="/scamrequests">
               <ScamRequests />
+            </AdminRoute>
+            <AdminRoute path="/postnewscam">
+              <PostNewScamPage />
             </AdminRoute>
             <Route path="/verification" component={VerificationPage} />
             <Route path="/signup" component={SignUpComponent} />

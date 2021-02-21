@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./scamrequests.scss";
+import { skeletonUIForDetailsPage } from "../components/skeletonui/skeletonui";
 
 const ScamRequests = () => {
   const [scamrequests, setscamrequests] = useState([]);
@@ -15,7 +16,6 @@ const ScamRequests = () => {
       );
       const data = response.data;
       setscamrequests(data);
-      console.log(data);
       setloading(false);
     } catch (error) {
       const err = error.response.data;
@@ -31,8 +31,8 @@ const ScamRequests = () => {
       <section className="scamrequests">
         <div className="container">
           <div className="row">
-            <h1>scamrequests for audit</h1>
-            {loading && <p>loading data....</p>}
+            <h1>ScamRequests For Admin Audit</h1>
+            {loading && skeletonUIForDetailsPage()}
             {scamrequests?.map((scamrequest, index) => (
               <div className="scamrequests__title" key={index}>
                 <h3> {scamrequest.name} </h3>

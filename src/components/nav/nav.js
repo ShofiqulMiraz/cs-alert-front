@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./nav.scss";
 import { Link, NavLink } from "react-router-dom";
-import MenuOpen from "../../assets/menu.svg";
-import MenuClose from "../../assets/close.svg";
 import { Logout } from "../../redux/actions/user";
 
 const NavBar = () => {
@@ -26,7 +24,6 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
-            {/* <img src={logo} alt="logo" className="logo" /> */}
             CryptoScamAlert
           </Link>
           <button
@@ -40,17 +37,9 @@ const NavBar = () => {
             onClick={navclickHandler}
           >
             {navclicked ? (
-              <img
-                src={MenuClose}
-                alt="menuopen"
-                className="img-fluid menuclose"
-              />
+              <i className="fas fa-times"></i>
             ) : (
-              <img
-                src={MenuOpen}
-                alt="menuopen"
-                className="img-fluid menuopen"
-              />
+              <i className="fas fa-bars"></i>
             )}
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
@@ -108,11 +97,18 @@ const NavBar = () => {
                 </>
               )}
               {user?.role === "admin" && (
-                <li className="nav-item">
-                  <NavLink to="/scamrequests" className="nav-link">
-                    Scam Requests
-                  </NavLink>
-                </li>
+                <>
+                  <li className="nav-item">
+                    <NavLink to="/scamrequests" className="nav-link">
+                      Scam Requests
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/postnewscam" className="nav-link">
+                      Post New Scam
+                    </NavLink>
+                  </li>
+                </>
               )}
             </ul>
           </div>
