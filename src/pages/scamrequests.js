@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./scamrequests.scss";
 import { skeletonUIForDetailsPage } from "../components/skeletonui/skeletonui";
+import { Helmet } from "react-helmet-async";
 
 const ScamRequests = () => {
   const [scamrequests, setscamrequests] = useState([]);
@@ -28,6 +29,9 @@ const ScamRequests = () => {
 
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | Scam Requests</title>
+      </Helmet>
       <section className="scamrequests">
         <div className="container">
           <div className="row">

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ScamDetails from "../components/scamdetails/scamdetails";
+import { Helmet } from "react-helmet-async";
 
 const SingleScamDetailsPage = ({ match }) => {
   const [scamDetails, setscamDetails] = useState({});
@@ -23,6 +24,9 @@ const SingleScamDetailsPage = ({ match }) => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | {match.params.id} </title>
+      </Helmet>
       <ScamDetails scam={scamDetails} />
     </>
   );

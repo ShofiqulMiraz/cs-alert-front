@@ -1,5 +1,4 @@
 import React, { useEffect, Suspense } from "react";
-
 import NavBar from "./components/nav/nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoadingSpinner from "./components/loadingspinner/loadingspinner";
@@ -8,6 +7,7 @@ import { useDispatch } from "react-redux";
 import SearchPage from "./pages/searchpage";
 import PrivateRoute from "./auth/privateroutes";
 import AdminRoute from "./auth/adminroutes";
+import { HelmetProvider } from "react-helmet-async";
 const ScamRequests = React.lazy(() => import("./pages/scamrequests"));
 const LoginComponent = React.lazy(() => import("./components/login/login"));
 const HomePage = React.lazy(() => import("./pages/homepage"));
@@ -36,8 +36,8 @@ function App() {
     }
   }, []);
   return (
-    <>
-      <Suspense fallback={<LoadingSpinner />}>
+    <Suspense fallback={<LoadingSpinner />}>
+      <HelmetProvider>
         <Router>
           <NavBar />
           <Switch>
@@ -45,24 +45,18 @@ function App() {
             <Route path="/allscammers" component={AllScammerPage} />
             <Route path="/newestscams" component={NewestScamsPage} />
             <Route path="/topscams" component={TopScamPage} />
-            <PrivateRoute path="/reportscam">
-              <ReportScamPage />
-            </PrivateRoute>
-            <AdminRoute path="/scamrequests">
-              <ScamRequests />
-            </AdminRoute>
-            <AdminRoute path="/postnewscam">
-              <PostNewScamPage />
-            </AdminRoute>
+            <PrivateRoute path="/reportscam" component={ReportScamPage} />
             <Route path="/verification" component={VerificationPage} />
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/login" component={LoginComponent} />
             <Route path="/scams/:id" component={SingleScamDetailsPage} />
             <Route path="/search/:term" component={SearchPage} />
+            <AdminRoute path="/scamrequests" component={ScamRequests} />
+            <AdminRoute path="/postnewscam" component={PostNewScamPage} />
           </Switch>
         </Router>
-      </Suspense>
-    </>
+      </HelmetProvider>
+    </Suspense>
   );
 }
 

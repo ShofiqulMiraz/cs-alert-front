@@ -8,6 +8,7 @@ import ScamGallery from "../components/scamgallery/scamgallery";
 import Search from "../components/search/search";
 import Services from "../components/services/services";
 import TopScam from "../components/topscam/topscam";
+import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
   const [scamssortedbydate, setscamssortedbydate] = useState([]);
@@ -16,7 +17,9 @@ const HomePage = () => {
   const getScamsByDate = async () => {
     try {
       setloading(true);
-      const response = await axios.get(`https://cs-alert-api.herokuapp.com/api/scams?limit=6`);
+      const response = await axios.get(
+        `https://cs-alert-api.herokuapp.com/api/scams?limit=6`
+      );
       const scams = response.data;
       setscamssortedbydate(scams);
       setloading(false);
@@ -27,7 +30,9 @@ const HomePage = () => {
   const getScamsByLikes = async () => {
     try {
       setloading(true);
-      const response = await axios.get(`https://cs-alert-api.herokuapp.com/api/scams?limit=6`);
+      const response = await axios.get(
+        `https://cs-alert-api.herokuapp.com/api/scams?limit=6`
+      );
       const scams = response.data;
       setscamssortedbylikes(scams);
       setloading(false);
@@ -41,6 +46,9 @@ const HomePage = () => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | Official Website</title>
+      </Helmet>
       <Hero />
       <Search />
       <Services />

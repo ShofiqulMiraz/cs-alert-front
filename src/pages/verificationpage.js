@@ -6,6 +6,7 @@ import Footer from "../components/footer/footer";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import useClipboard from "react-use-clipboard";
+import { Helmet } from "react-helmet-async";
 
 const VerificationPage = () => {
   const [isCopiedBTC, setCopiedBTC] = useClipboard(
@@ -25,7 +26,11 @@ const VerificationPage = () => {
           "Content-Type": "application/json",
         },
       };
-      await axios.post("https://cs-alert-api.herokuapp.com/api/verification", data, config);
+      await axios.post(
+        "https://cs-alert-api.herokuapp.com/api/verification",
+        data,
+        config
+      );
       setloading(false);
       toast.success(
         "Successfully Submitted your Request. We will talk back to you very soon."
@@ -40,6 +45,9 @@ const VerificationPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | Request Verification </title>
+      </Helmet>
       <div className="container mt-2">
         <h1 className="verificationpage__head-title">Request Verification</h1>
         <p className="verificationpage__head-para">

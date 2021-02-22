@@ -6,6 +6,7 @@ import "./allscammerpage.scss";
 import ScamGallery from "../components/scamgallery/scamgallery";
 import Footer from "../components/footer/footer";
 import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AllScammerPage = () => {
   let history = useHistory();
@@ -16,7 +17,9 @@ const AllScammerPage = () => {
   const getScamsByLikes = async () => {
     try {
       setloading(true);
-      const response = await axios.get(`https://cs-alert-api.herokuapp.com/api/scams?limit=20`);
+      const response = await axios.get(
+        `https://cs-alert-api.herokuapp.com/api/scams?limit=20`
+      );
       const scams = response.data;
       setscamssortedbylikes(scams);
       setloading(false);
@@ -34,6 +37,9 @@ const AllScammerPage = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | All Scammers</title>
+      </Helmet>
       <section className="allscammerpage mt-2">
         <div className="container">
           <div className="row">

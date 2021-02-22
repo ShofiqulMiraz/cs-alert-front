@@ -8,6 +8,7 @@ import { Login } from "../../redux/actions/user";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const LoginComponent = () => {
   const { isloggedin } = useSelector((state) => state.userReducer);
@@ -19,11 +20,15 @@ const LoginComponent = () => {
   const onSubmit = async (data) => {
     try {
       setloading(true);
-      const res = await axios.post("https://cs-alert-api.herokuapp.com/api/users/login", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await axios.post(
+        "https://cs-alert-api.herokuapp.com/api/users/login",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const { user, token } = res.data;
       dispatch(Login(user, token));
       setloading(false);
@@ -40,6 +45,9 @@ const LoginComponent = () => {
   }
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | Log In </title>
+      </Helmet>
       <section className="login pt-4 pb-5">
         <div className="container login__container">
           <div className="row">

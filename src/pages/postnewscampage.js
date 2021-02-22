@@ -4,6 +4,7 @@ import { useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const PostNewScamPage = () => {
   const [markdownvalue, setmarkdownvalue] = useState("");
@@ -34,6 +35,9 @@ const PostNewScamPage = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | Post New Scam</title>
+      </Helmet>
       <div className="container mt-2">
         <h1 className="reportscampage__head-title">
           Post New Crypto Scam (Admin){" "}

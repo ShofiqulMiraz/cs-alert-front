@@ -6,6 +6,7 @@ import Scam from "../components/scam/scam";
 import ScamGallery from "../components/scamgallery/scamgallery";
 import Footer from "../components/footer/footer";
 import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const NewestScamsPage = () => {
   let history = useHistory();
@@ -16,7 +17,9 @@ const NewestScamsPage = () => {
   const getScamsByLikes = async () => {
     try {
       setloading(true);
-      const response = await axios.get(`https://cs-alert-api.herokuapp.com/api/scams?limit=20`);
+      const response = await axios.get(
+        `https://cs-alert-api.herokuapp.com/api/scams?limit=20`
+      );
       const scams = response.data;
       setscamssortedbydates(scams);
       setloading(false);
@@ -34,6 +37,9 @@ const NewestScamsPage = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | Newsest Scams</title>
+      </Helmet>
       <section className="newestscampage mt-2">
         <div className="container">
           <div className="row">

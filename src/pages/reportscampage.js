@@ -6,6 +6,7 @@ import "./reportscampage.scss";
 import Footer from "../components/footer/footer";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ReportScamPage = () => {
   let history = useHistory();
@@ -22,7 +23,11 @@ const ReportScamPage = () => {
           "Content-Type": "application/json",
         },
       };
-      await axios.post("https://cs-alert-api.herokuapp.com/api/scamrequest", body, config);
+      await axios.post(
+        "https://cs-alert-api.herokuapp.com/api/scamrequest",
+        body,
+        config
+      );
       setloading(false);
       toast.success(
         "Successfully Submitted your Request. We will review and add your request to our list soon."
@@ -36,6 +41,9 @@ const ReportScamPage = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>CryptoScamAlert | Report Scam</title>
+      </Helmet>
       <div className="container mt-2">
         <h1 className="reportscampage__head-title">Report new Crypto scam</h1>
         <p className="reportscampage__head-para">
