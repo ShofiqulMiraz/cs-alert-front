@@ -11,6 +11,7 @@ const SingleScamDetailsPage = ({ match }) => {
         `https://cs-alert-api.herokuapp.com/api/scams/${match.params.id}`
       );
       const scam = response.data[0];
+      console.log(scam);
       setscamDetails(scam);
     } catch (error) {
       const err = error.response.data.message;

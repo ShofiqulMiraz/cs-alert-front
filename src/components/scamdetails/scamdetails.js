@@ -8,20 +8,35 @@ import { toast } from "react-toastify";
 
 const ScamDetails = ({ scam }) => {
   const htmlPart = `${scam.description}`;
-  const [loading, setloading] = useState(false);
+  const [likeloading, setlikeloading] = useState(false);
+  const [unlikeloading, setunlikeloading] = useState(false);
 
-  const handleLikes = async () => {
+  const handleLike = async () => {
     try {
-      setloading(true);
+      setlikeloading(true);
       await axios.patch(
         `https://cs-alert-api.herokuapp.com/api/scams/${scam._id}/like`
       );
       toast.success("successfully liked report!");
-      setloading(false);
+      setlikeloading(false);
     } catch (error) {
       const err = error.response.data;
       toast.error(err);
-      setloading(false);
+      setlikeloading(false);
+    }
+  };
+  const handleUnLike = async () => {
+    try {
+      setunlikeloading(true);
+      await axios.patch(
+        `https://cs-alert-api.herokuapp.com/api/scams/${scam._id}/unlike`
+      );
+      toast.success("successfully unliked report!");
+      setunlikeloading(false);
+    } catch (error) {
+      const err = error.response.data;
+      toast.error(err);
+      setunlikeloading(false);
     }
   };
   return (
@@ -36,21 +51,34 @@ const ScamDetails = ({ scam }) => {
         <hr className="alert__hr mb-3" />
         <div className="votes">
           <p>
-            Votes:
-            {(scam?.likes?.length > 1 && ` ${scam.likes.length}`) || ` 0`}
+            {" "}
+            Votes:{" "}
+            {scam?.likes?.length >= 0 ? (
+              `${scam.likes.length}`
+            ) : (
+              <Skeleton width={100} />
+            )}
           </p>
-
-          <button className="likebtn btn btn-primary " onClick={handleLikes}>
-            <i className="fas fa-thumbs-up"></i>{" "}
-            <span> {loading ? "voting..." : "vote this report"} </span>
-          </button>
+          <div className="votelikeunlike">
+            <button className="likebtn btn btn-primary me-2" onClick={handleLike}>
+              <i className="fas fa-thumbs-up"></i>{" "}
+              <span> {likeloading && "..."} </span>
+            </button>
+            <button
+              className="unlikebtn btn btn-primary"
+              onClick={handleUnLike}
+            >
+              <i className="fas fa-thumbs-down"></i>{" "}
+              <span> {unlikeloading && "..."} </span>
+            </button>
+          </div>
         </div>
         <hr className="alert__hr mt-3" />
         <div className="row">
           <h1 className="scamdetails__title"> {scam.title || <Skeleton />} </h1>
         </div>
         <hr className="alert__hr" />
-        <div className="row">
+        <div className="row pt-3 pb-4">
           <div className="col-md-6">
             <p className="scamdetails__para-small">Scam Description</p>
             {scam.description ? (

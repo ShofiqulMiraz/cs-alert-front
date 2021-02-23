@@ -34,8 +34,10 @@
   font-weight: 700;
 }
 
-.logout-btn {
-  padding: 13px 8px;
+.logout-btn,
+.admin-btn {
+  padding: 13px 10px;
+  border: 0px solid transparent;
   @media (max-width: 991px) {
     padding: 13px 0 13px 0;
   }
@@ -47,13 +49,18 @@
   }
 }
 
-.menuopen,
-.menuclose {
-  height: 24px;
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(289deg) brightness(108%)
-    contrast(105%);
-}
-
 .active {
   background-color: #1d1d1d42;
+  @media (max-width: 991px) {
+    background-color: initial;
+  }
+}
+
+.dropdown-menu {
+  @media (max-width: 991px) {
+    padding: 0 0;
+    background-color: transparent;
+    border: none !important;
+    border-radius: 0 !important;
+  }
 }

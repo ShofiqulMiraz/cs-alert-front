@@ -72,6 +72,36 @@ const NavBar = () => {
                   Check Before Invest
                 </NavLink>
               </li>
+              {user?.role === "admin" && (
+                <>
+                  <li className="nav-item dropdown">
+                    <button
+                      className="btn admin-btn dropdown-toggle"
+                      type="button"
+                      id="admindropdown"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Admin
+                    </button>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="admindropdown"
+                    >
+                      <li className="nav-item">
+                        <NavLink to="/scamrequests" className="nav-link">
+                          Scam Requests
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink to="/postnewscam" className="nav-link">
+                          Post New Scam
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                </>
+              )}
               {isloggedin ? (
                 <>
                   <button
@@ -92,20 +122,6 @@ const NavBar = () => {
                   <li className="nav-item">
                     <NavLink to="/signup" className="nav-link">
                       Signup
-                    </NavLink>
-                  </li>
-                </>
-              )}
-              {user?.role === "admin" && (
-                <>
-                  <li className="nav-item">
-                    <NavLink to="/scamrequests" className="nav-link">
-                      Scam Requests
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="/postnewscam" className="nav-link">
-                      Post New Scam
                     </NavLink>
                   </li>
                 </>

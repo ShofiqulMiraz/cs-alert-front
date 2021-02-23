@@ -101,7 +101,7 @@ const ScamRequests = () => {
                       Close
                     </button>
                     <button type="button" className="btn btn-primary">
-                      Save changes
+                      Delete This Report
                     </button>
                   </div>
                 </div>

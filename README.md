@@ -1,3 +1,3 @@
-# Getting Started with Create React App
+# Created with Create React App by Facebook.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Production live:  [cs-alert-client](https://cs-alert-client.web.app/).

@@ -6,3 +6,13 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.btn {
+  border-radius: 0 !important;
+}
