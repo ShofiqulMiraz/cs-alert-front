@@ -1,8 +1,8 @@
 import "./searchpage.scss";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { skeletonUIForDetailsPage } from "../components/skeletonui/skeletonui";
-import Scam from "../components/scam/scam";
+import { skeletonUIForDetailsPage } from "../../components/skeletonui/skeletonui";
+import Scam from "../../components/scam/scam";
 import { Helmet } from "react-helmet-async";
 
 const SearchPage = ({ match }) => {

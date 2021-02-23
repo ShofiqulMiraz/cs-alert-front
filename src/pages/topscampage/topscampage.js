@@ -1,16 +1,16 @@
-import "./newestscamspage.scss";
-import { skeletonUIForDetailsPage } from "../components/skeletonui/skeletonui";
+import { skeletonUIForDetailsPage } from "../../components/skeletonui/skeletonui";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Scam from "../components/scam/scam";
-import ScamGallery from "../components/scamgallery/scamgallery";
-import Footer from "../components/footer/footer";
+import Scam from "../../components/scam/scam";
+import ScamGallery from "../../components/scamgallery/scamgallery";
+import Footer from "../../components/footer/footer";
 import { useHistory } from "react-router-dom";
+import "./topscampage.scss";
 import { Helmet } from "react-helmet-async";
 
-const NewestScamsPage = () => {
+const TopScamPage = () => {
   let history = useHistory();
-  const [scamssortedbydates, setscamssortedbydates] = useState([]);
+  const [scamssortedbylikes, setscamssortedbylikes] = useState([]);
   const [loading, setloading] = useState(false);
   const [searchterm, setsearchterm] = useState("");
 
@@ -21,7 +21,7 @@ const NewestScamsPage = () => {
         `https://cs-alert-api.herokuapp.com/api/scams?limit=20`
       );
       const scams = response.data;
-      setscamssortedbydates(scams);
+      setscamssortedbylikes(scams);
       setloading(false);
     } catch (error) {
       console.log(error);
@@ -38,16 +38,16 @@ const NewestScamsPage = () => {
   return (
     <>
       <Helmet>
-        <title>CryptoScamAlert | Newsest Scams</title>
+        <title>CryptoScamAlert | Top Scams </title>
       </Helmet>
-      <section className="newestscampage mt-2">
+      <section className="topscampage mt-2">
         <div className="container">
           <div className="row">
-            <div className="newestscampage__head">
-              <h1 className="newestscampage__head-title">
-                Newest Crypto Scammers
+            <div className="topscampage__head">
+              <h1 className="topscampage__head-title">
+                Top Crypto Scammers (576)
               </h1>
-              <p className="newestscampage__head-para">
+              <p className="topscampage__head-para">
                 Below are the list of newest scammers in the CryptoScamAlert
                 database.
               </p>
@@ -61,7 +61,7 @@ const NewestScamsPage = () => {
               />
             </form>
             {loading && skeletonUIForDetailsPage()}
-            <Scam scams={scamssortedbydates} />
+            <Scam scams={scamssortedbylikes} />
           </div>
         </div>
         <ScamGallery />
@@ -71,4 +71,4 @@ const NewestScamsPage = () => {
   );
 };
 
-export default NewestScamsPage;
+export default TopScamPage;

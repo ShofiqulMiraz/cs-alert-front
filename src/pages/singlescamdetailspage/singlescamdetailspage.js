@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import ScamDetails from "../components/scamdetails/scamdetails";
+import ScamDetails from "../../components/scamdetails/scamdetails";
 import { Helmet } from "react-helmet-async";
 
 const SingleScamDetailsPage = ({ match }) => {

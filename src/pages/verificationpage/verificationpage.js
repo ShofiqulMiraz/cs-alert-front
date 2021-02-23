@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
 import "./verificationpage.scss";
-import Footer from "../components/footer/footer";
+import Footer from "../../components/footer/footer";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import useClipboard from "react-use-clipboard";

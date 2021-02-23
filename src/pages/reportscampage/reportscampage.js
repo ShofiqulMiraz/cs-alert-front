@@ -3,7 +3,7 @@ import { useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import axios from "axios";
 import "./reportscampage.scss";
-import Footer from "../components/footer/footer";
+import Footer from "../../components/footer/footer";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet-async";

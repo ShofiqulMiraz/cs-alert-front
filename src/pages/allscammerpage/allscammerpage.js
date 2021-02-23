@@ -1,10 +1,10 @@
-import { skeletonUIForDetailsPage } from "../components/skeletonui/skeletonui";
+import { skeletonUIForDetailsPage } from "../../components/skeletonui/skeletonui";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Scam from "../components/scam/scam";
+import Scam from "../../components/scam/scam";
 import "./allscammerpage.scss";
-import ScamGallery from "../components/scamgallery/scamgallery";
-import Footer from "../components/footer/footer";
+import ScamGallery from "../../components/scamgallery/scamgallery";
+import Footer from "../../components/footer/footer";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 

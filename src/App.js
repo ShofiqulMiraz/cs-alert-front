@@ -4,23 +4,35 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoadingSpinner from "./components/loadingspinner/loadingspinner";
 import { Login, Logout } from "./redux/actions/user";
 import { useDispatch } from "react-redux";
-import SearchPage from "./pages/searchpage";
+import SearchPage from "./pages/searchpage/searchpage";
 import PrivateRoute from "./auth/privateroutes";
 import AdminRoute from "./auth/adminroutes";
 import { HelmetProvider } from "react-helmet-async";
-const ScamRequests = React.lazy(() => import("./pages/scamrequests"));
+const ScamRequests = React.lazy(() =>
+  import("./pages/scamrequests/scamrequests")
+);
 const LoginComponent = React.lazy(() => import("./components/login/login"));
-const HomePage = React.lazy(() => import("./pages/homepage"));
-const AllScammerPage = React.lazy(() => import("./pages/allscammerpage"));
-const NewestScamsPage = React.lazy(() => import("./pages/newestscamspage"));
-const TopScamPage = React.lazy(() => import("./pages/topscampage"));
-const ReportScamPage = React.lazy(() => import("./pages/reportscampage"));
-const VerificationPage = React.lazy(() => import("./pages/verificationpage"));
+const HomePage = React.lazy(() => import("./pages/homepage/homepage"));
+const AllScammerPage = React.lazy(() =>
+  import("./pages/allscammerpage/allscammerpage")
+);
+const NewestScamsPage = React.lazy(() =>
+  import("./pages/newestscamspage/newestscamspage")
+);
+const TopScamPage = React.lazy(() => import("./pages/topscampage/topscampage"));
+const ReportScamPage = React.lazy(() =>
+  import("./pages/reportscampage/reportscampage")
+);
+const VerificationPage = React.lazy(() =>
+  import("./pages/verificationpage/verificationpage")
+);
 const SingleScamDetailsPage = React.lazy(() =>
-  import("./pages/singlescamdetailspage")
+  import("./pages/singlescamdetailspage/singlescamdetailspage")
 );
 const SignUpComponent = React.lazy(() => import("./components/signup/signup"));
-const PostNewScamPage = React.lazy(() => import("./pages/postnewscampage"));
+const PostNewScamPage = React.lazy(() =>
+  import("./pages/postnewscampage/postnewscampage")
+);
 
 function App() {
   // continuously checking user auth state

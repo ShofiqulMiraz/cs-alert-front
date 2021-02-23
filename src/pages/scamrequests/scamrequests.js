@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./scamrequests.scss";
-import { skeletonUIForDetailsPage } from "../components/skeletonui/skeletonui";
+import { skeletonUIForDetailsPage } from "../../components/skeletonui/skeletonui";
 import { Helmet } from "react-helmet-async";
 
 const ScamRequests = () => {
