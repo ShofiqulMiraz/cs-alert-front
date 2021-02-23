@@ -8,6 +8,10 @@ import SearchPage from "./pages/searchpage/searchpage";
 import PrivateRoute from "./auth/privateroutes";
 import AdminRoute from "./auth/adminroutes";
 import { HelmetProvider } from "react-helmet-async";
+
+const SingleScamRequest = React.lazy(() =>
+  import("./pages/singlescamrequest/singlescamrequest")
+);
 const ScamRequests = React.lazy(() =>
   import("./pages/scamrequests/scamrequests")
 );
@@ -64,6 +68,7 @@ function App() {
             <Route path="/scams/:id" component={SingleScamDetailsPage} />
             <Route path="/search/:term" component={SearchPage} />
             <AdminRoute path="/scamrequests" component={ScamRequests} />
+            <AdminRoute path="/scamrequest/:id" component={SingleScamRequest} />
             <AdminRoute path="/postnewscam" component={PostNewScamPage} />
           </Switch>
         </Router>
