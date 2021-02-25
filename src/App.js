@@ -9,6 +9,7 @@ import PrivateRoute from "./auth/privateroutes";
 import AdminRoute from "./auth/adminroutes";
 import { HelmetProvider } from "react-helmet-async";
 
+const NotFound = React.lazy(() => import("./pages/notfound/notfound"));
 const SingleScamRequest = React.lazy(() =>
   import("./pages/singlescamrequest/singlescamrequest")
 );
@@ -70,6 +71,7 @@ function App() {
             <AdminRoute path="/scamrequests" component={ScamRequests} />
             <AdminRoute path="/scamrequest/:id" component={SingleScamRequest} />
             <AdminRoute path="/postnewscam" component={PostNewScamPage} />
+            <Route component={NotFound} />
           </Switch>
         </Router>
       </HelmetProvider>

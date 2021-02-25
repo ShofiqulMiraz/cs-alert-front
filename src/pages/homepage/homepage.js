@@ -13,31 +13,34 @@ import { Helmet } from "react-helmet-async";
 const HomePage = () => {
   const [scamssortedbydate, setscamssortedbydate] = useState([]);
   const [scamssortedbylikes, setscamssortedbylikes] = useState([]);
-  const [loading, setloading] = useState(false);
+  const [newestscamloading, setnewestscamloading] = useState(false);
+  const [topscamloading, settopscamloading] = useState();
   const getScamsByDate = async () => {
     try {
-      setloading(true);
+      setnewestscamloading(true);
       const response = await axios.get(
         `https://cs-alert-api.herokuapp.com/api/scams?limit=6`
       );
       const scams = response.data;
       setscamssortedbydate(scams);
-      setloading(false);
+      setnewestscamloading(false);
     } catch (error) {
       console.log(error);
+      setnewestscamloading(false);
     }
   };
   const getScamsByLikes = async () => {
     try {
-      setloading(true);
+      settopscamloading(true);
       const response = await axios.get(
         `https://cs-alert-api.herokuapp.com/api/scams?limit=6`
       );
       const scams = response.data;
       setscamssortedbylikes(scams);
-      setloading(false);
+      settopscamloading(false);
     } catch (error) {
       console.log(error);
+      settopscamloading(false);
     }
   };
   useEffect(() => {
@@ -53,8 +56,8 @@ const HomePage = () => {
       <Search />
       <Services />
       <Promotion />
-      <NewestScam scams={scamssortedbydate} loading={loading} />
-      <TopScam scams={scamssortedbylikes} loading={loading} />
+      <NewestScam scams={scamssortedbydate} loading={newestscamloading} />
+      <TopScam scams={scamssortedbylikes} loading={topscamloading} />
       <ScamGallery />
       <Footer />
     </>
