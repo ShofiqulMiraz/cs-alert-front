@@ -25,7 +25,6 @@ const ResetPassword = ({ match }) => {
           },
         }
       );
-      console.log(res);
       const { user, token } = res.data;
       dispatch(Login(user, token));
       setloading(false);

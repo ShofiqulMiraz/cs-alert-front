@@ -12,7 +12,7 @@ const ForgotPassword = () => {
     try {
       setloading(true);
       const res = await axios.post(
-        "http://localhost:8000/api/users/forgotpassword",
+        "https://cs-alert-api.herokuapp.com/api/users/forgotpassword",
         data,
         {
           headers: {
