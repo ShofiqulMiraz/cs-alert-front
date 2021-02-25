@@ -1,13 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./login.scss";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Login } from "../../redux/actions/user";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const LoginComponent = () => {
@@ -19,6 +17,7 @@ const LoginComponent = () => {
 
   const onSubmit = async (data) => {
     try {
+      console.log(data);
       setloading(true);
       const res = await axios.post(
         "https://cs-alert-api.herokuapp.com/api/users/login",
@@ -88,6 +87,15 @@ const LoginComponent = () => {
                 <Link to="/signup" className="btn">
                   {" "}
                   Sign Up Now!{" "}
+                </Link>{" "}
+              </span>
+            </div>
+            <div className="login__toforgotpassword mt-2">
+              <span>
+                Forgot your Password?{" "}
+                <Link to="/forgotpassword" className="btn">
+                  {" "}
+                  Reset Here!{" "}
                 </Link>{" "}
               </span>
             </div>

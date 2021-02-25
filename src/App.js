@@ -8,6 +8,8 @@ import SearchPage from "./pages/searchpage/searchpage";
 import PrivateRoute from "./auth/privateroutes";
 import AdminRoute from "./auth/adminroutes";
 import { HelmetProvider } from "react-helmet-async";
+import ForgotPassword from "./pages/forgotpassword/forgotpassword";
+import ResetPassword from "./pages/resetpassword/resetpassword";
 
 const NotFound = React.lazy(() => import("./pages/notfound/notfound"));
 const SingleScamRequest = React.lazy(() =>
@@ -66,6 +68,8 @@ function App() {
             <Route path="/verification" component={VerificationPage} />
             <Route path="/signup" component={SignUpComponent} />
             <Route path="/login" component={LoginComponent} />
+            <Route path="/forgotpassword" component={ForgotPassword} />
+            <Route path="/resetpassword/:token" component={ResetPassword} />
             <Route path="/scams/:id" component={SingleScamDetailsPage} />
             <Route path="/search/:term" component={SearchPage} />
             <AdminRoute path="/scamrequests" component={ScamRequests} />

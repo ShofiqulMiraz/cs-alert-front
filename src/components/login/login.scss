@@ -38,4 +38,18 @@
       }
     }
   }
+  &__toforgotpassword {
+    text-transform: capitalize;
+    span a {
+      padding: 0;
+      color: #0366d6;
+      &:focus,
+      &:hover {
+        color: #0366d6;
+        text-decoration: none;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+    }
+  }
 }
