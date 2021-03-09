@@ -8,9 +8,13 @@ import SearchPage from "./pages/searchpage/searchpage";
 import PrivateRoute from "./auth/privateroutes";
 import AdminRoute from "./auth/adminroutes";
 import { HelmetProvider } from "react-helmet-async";
-import ForgotPassword from "./pages/forgotpassword/forgotpassword";
-import ResetPassword from "./pages/resetpassword/resetpassword";
 
+const ForgotPassword = React.lazy(() =>
+  import("./pages/forgotpassword/forgotpassword")
+);
+const ResetPassword = React.lazy(() =>
+  import("./pages/resetpassword/resetpassword")
+);
 const NotFound = React.lazy(() => import("./pages/notfound/notfound"));
 const SingleScamRequest = React.lazy(() =>
   import("./pages/singlescamrequest/singlescamrequest")

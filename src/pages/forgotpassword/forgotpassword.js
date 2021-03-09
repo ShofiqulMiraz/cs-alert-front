@@ -4,8 +4,11 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 const ForgotPassword = () => {
+  const { isloggedin } = useSelector((state) => state.userReducer);
   const { register, handleSubmit } = useForm();
   const [loading, setloading] = useState(false);
   const onSubmit = async (data) => {
@@ -28,6 +31,11 @@ const ForgotPassword = () => {
       setloading(false);
     }
   };
+
+  if (isloggedin) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <>
       <Helmet>
