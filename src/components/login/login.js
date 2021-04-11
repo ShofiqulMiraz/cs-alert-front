@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { Login } from "../../redux/actions/user";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import TestAccounts from "../testaccounts/testaccounts";
 
 const LoginComponent = () => {
   const { isloggedin } = useSelector((state) => state.userReducer);
@@ -102,6 +103,7 @@ const LoginComponent = () => {
           </div>
         </div>
       </section>
+      <TestAccounts />
     </>
   );
 };

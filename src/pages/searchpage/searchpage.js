@@ -22,18 +22,19 @@ const SearchPage = ({ match }) => {
       <Helmet>
         <title>CryptoScamAlert | Search | {match.params.term} </title>
       </Helmet>
-      {searchResult ? (
-        <div className="container mt-4">
-          <div className="row">
-            <h1>here is your search result: </h1>
-            <Scam scams={searchResult} />
-          </div>
+      <div className="container mt-4">
+        <div className="row">
+          <h1>Here is Your Search Result... </h1>
+          {searchResult ? (
+            <>
+              <p> We found {searchResult.length} results </p>
+              <Scam scams={searchResult} />
+            </>
+          ) : (
+            <>{skeletonUIForDetailsPage()}</>
+          )}
         </div>
-      ) : (
-        <div className="container mt-4">
-          <div className="row">{skeletonUIForDetailsPage()}</div>
-        </div>
-      )}
+      </div>
     </>
   );
 };
