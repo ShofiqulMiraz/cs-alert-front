@@ -57,7 +57,7 @@ const PostNewScamPage = () => {
                   type="text"
                   className="form-control"
                   name="title"
-                  ref={register({ required: true, maxLength: 20 })}
+                  ref={register({ required: true, maxLength: 1000 })}
                   placeholder="Scam Post Title"
                 />
                 <small className="form-text text-muted">Scam post title</small>
