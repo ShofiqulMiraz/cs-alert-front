@@ -7,9 +7,7 @@ const SingleScamRequest = ({ match }) => {
   const [scamrequestdetails, setscamrequestdetails] = useState([]);
   const getScamRequestDetails = async () => {
     try {
-      const response = await axios.get(
-        `https://cs-alert-api.herokuapp.com/api/scamrequest/${match.params.id}`
-      );
+      const response = await axios.get(`/scamrequest/${match.params.id}`);
       const data = response.data;
       console.log(data);
       setscamrequestdetails(data);

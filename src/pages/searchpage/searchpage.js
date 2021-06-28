@@ -8,9 +8,7 @@ import { Helmet } from "react-helmet-async";
 const SearchPage = ({ match }) => {
   const [searchResult, setsearchResult] = useState();
   const getSearchResult = async () => {
-    const res = await axios.get(
-      `https://cs-alert-api.herokuapp.com/api/scams/search/${match.params.term}`
-    );
+    const res = await axios.get(`/scams/search/${match.params.term}`);
     setsearchResult(res.data);
   };
   useEffect(() => {

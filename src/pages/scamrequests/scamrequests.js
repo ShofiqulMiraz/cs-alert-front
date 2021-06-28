@@ -14,9 +14,7 @@ const ScamRequests = () => {
   const getScamRequests = async () => {
     try {
       setloading(true);
-      const response = await axios.get(
-        `https://cs-alert-api.herokuapp.com/api/scamrequest`
-      );
+      const response = await axios.get(`/scamrequest`);
       const data = response.data;
       setscamrequests(data);
       setloading(false);

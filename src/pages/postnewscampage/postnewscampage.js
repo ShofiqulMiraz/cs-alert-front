@@ -20,11 +20,7 @@ const PostNewScamPage = () => {
           "Content-Type": "application/json",
         },
       };
-      await axios.post(
-        "https://cs-alert-api.herokuapp.com/api/scams",
-        body,
-        config
-      );
+      await axios.post("/scams", body, config);
       setloading(false);
       toast.success("Successfully added new post.");
     } catch (error) {

@@ -17,7 +17,7 @@ const ResetPassword = ({ match }) => {
     try {
       setloading(true);
       const res = await axios.patch(
-        `https://cs-alert-api.herokuapp.com/api/users/resetpassword/${match.params.token}`,
+        `/users/resetpassword/${match.params.token}`,
         data,
         {
           headers: {

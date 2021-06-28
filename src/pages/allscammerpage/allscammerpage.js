@@ -17,15 +17,7 @@ const AllScammerPage = () => {
   const getScamsByLikes = async () => {
     try {
       setloading(true);
-      const response = await axios.get(
-        `https://cs-alert-api.herokuapp.com/api/scams`,
-        {
-          params: {
-            limit: 20,
-            sort: "likes",
-          },
-        }
-      );
+      const response = await axios.get(`/scams/?limit=20`);
       const scams = response.data;
       setscamssortedbylikes(scams);
       setloading(false);

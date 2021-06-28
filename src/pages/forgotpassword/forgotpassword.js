@@ -14,15 +14,11 @@ const ForgotPassword = () => {
   const onSubmit = async (data) => {
     try {
       setloading(true);
-      const res = await axios.post(
-        "https://cs-alert-api.herokuapp.com/api/users/forgotpassword",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await axios.post("/users/forgotpassword", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       setloading(false);
       toast.success(res.data);
     } catch (error) {

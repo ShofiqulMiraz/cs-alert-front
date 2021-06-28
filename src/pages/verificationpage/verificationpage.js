@@ -26,11 +26,7 @@ const VerificationPage = () => {
           "Content-Type": "application/json",
         },
       };
-      await axios.post(
-        "https://cs-alert-api.herokuapp.com/api/verification",
-        data,
-        config
-      );
+      await axios.post("/verification", data, config);
       setloading(false);
       toast.success(
         "Successfully Submitted your Request. We will talk back to you very soon."

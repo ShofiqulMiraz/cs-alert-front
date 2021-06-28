@@ -20,15 +20,11 @@ const LoginComponent = () => {
     try {
       console.log(data);
       setloading(true);
-      const res = await axios.post(
-        "https://cs-alert-api.herokuapp.com/api/users/login",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await axios.post("/users/login", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       const { user, token } = res.data;
       dispatch(Login(user, token));
       setloading(false);

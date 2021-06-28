@@ -18,9 +18,7 @@ const HomePage = () => {
   const getScamsByDate = async () => {
     try {
       setnewestscamloading(true);
-      const response = await axios.get(
-        `https://cs-alert-api.herokuapp.com/api/scams?limit=6`
-      );
+      const response = await axios.get(`/scams?limit=6`);
       const scams = response.data;
       setscamssortedbydate(scams);
       setnewestscamloading(false);
@@ -32,9 +30,7 @@ const HomePage = () => {
   const getScamsByLikes = async () => {
     try {
       settopscamloading(true);
-      const response = await axios.get(
-        `https://cs-alert-api.herokuapp.com/api/scams?limit=6`
-      );
+      const response = await axios.get(`/scams?limit=6`);
       const scams = response.data;
       setscamssortedbylikes(scams);
       settopscamloading(false);

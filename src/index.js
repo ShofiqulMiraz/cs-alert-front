@@ -11,12 +11,16 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import rootReducer from "./redux/reducers";
+import axios from "axios";
 
 // creating redux store
 const store = createStore(
   rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
+// adding global backend baseUrl
+axios.defaults.baseURL = "https://cs-alert-api.herokuapp.com/api";
 
 ReactDOM.render(
   <React.StrictMode>

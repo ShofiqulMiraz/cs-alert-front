@@ -17,18 +17,13 @@ const SignUpComponent = () => {
   const [loading, setloading] = useState(false);
 
   const onSubmit = async (data) => {
-    setloading(true);
-
     try {
-      const res = await axios.post(
-        "https://cs-alert-api.herokuapp.com/api/users/register",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      setloading(true);
+      const res = await axios.post("/users/register", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const { user, token } = res.data;
 

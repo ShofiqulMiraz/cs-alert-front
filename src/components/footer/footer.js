@@ -56,9 +56,24 @@ const Footer = () => {
         <div className="row">
           <div className="footer__copyright">
             <p>
-              Copyright &copy;2019-2020 by CryptoScamAlert.com. Terms and
-              Conditions <br />
-              Developed with love by shofiqulmiraz
+              Copyright &copy;2019-2021 by{" "}
+              <a
+                href="https://cryptoscamalert.com"
+                target="_blank"
+                style={{ textDecoration: "none" }}
+              >
+                CryptoScamAlert.com
+              </a>{" "}
+              . Terms and Conditions are available on{" "}
+              <a
+                href="https://cryptoscamalert.com"
+                target="_blank"
+                style={{ textDecoration: "none" }}
+              >
+                CryptoScamAlert.com
+              </a>{" "}
+              <br />
+              Developed for practice with love by shofiqulmiraz
             </p>
           </div>
         </div>

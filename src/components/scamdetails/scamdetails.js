@@ -15,7 +15,7 @@ const ScamDetails = ({ scam }) => {
     try {
       setlikeloading(true);
       await axios.patch(
-        `https://cs-alert-api.herokuapp.com/api/scams/${scam._id}/like`
+        `/scams/${scam._id}/like`
       );
       toast.success("successfully liked report!");
       setlikeloading(false);
@@ -29,7 +29,7 @@ const ScamDetails = ({ scam }) => {
     try {
       setunlikeloading(true);
       await axios.patch(
-        `https://cs-alert-api.herokuapp.com/api/scams/${scam._id}/unlike`
+        `/scams/${scam._id}/unlike`
       );
       toast.success("successfully unliked report!");
       setunlikeloading(false);
