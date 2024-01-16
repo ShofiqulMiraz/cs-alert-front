@@ -77,13 +77,13 @@ devDependencies:
     specifier: ^7.23.4
     version: 7.23.4(@babel/core@7.23.7)
   nth-check:
-    specifier: '>=2.0.1'
+    specifier: ^2.1.1
     version: 2.1.1
   postcss:
-    specifier: '>=8.4.31'
+    specifier: ^8.4.33
     version: 8.4.33
   prismjs:
-    specifier: '>=1.27.0'
+    specifier: ^1.29.0
     version: 1.29.0
 
 packages:
