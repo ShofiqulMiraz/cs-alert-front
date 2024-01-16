@@ -20,7 +20,7 @@
     "react-loading-skeleton": "^2.2.0",
     "react-redux": "^7.2.9",
     "react-router-dom": "^5.3.4",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-toastify": "^7.0.4",
     "react-use-clipboard": "^1.0.9",
     "redux": "^4.2.1",
@@ -43,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
